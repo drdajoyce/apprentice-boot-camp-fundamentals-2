@@ -16,40 +16,55 @@ namespace apprentice_bootcamp_fundamentals_2
         {
             string fizzBuzzOutput = "";
             for (; count < MAX_COUNT; count++) fizzBuzzOutput += SingleFizzBuzzResult(count) + " ";
-            string trimmedResult = fizzBuzzOutput.Substring(0, fizzBuzzOutput.Length - 1);
+            string trimmedResult = RemoveLastCharacter(fizzBuzzOutput);
             return trimmedResult;
         }
 
-        private string SingleFizzBuzzResult(int number)
+        private static string RemoveLastCharacter(string input)
+        {
+            return input.Substring(0, input.Length - 1);
+        }
+
+        private string SingleFizzBuzzResult(int index)
         {
             fizzCount++;
             buzzCount--;
 
             int fizzFactor = THREE;
 
-            string numberToString = (number + 1).ToString();
+            string numberToString = GetNumberFromIndex(index);
             bool divisibleByThree = fizzCount == fizzFactor;
             bool divisibleByFive = buzzCount == 0;
             string numberToFizzBuzz = divisibleByThree || divisibleByFive
-                ? "" 
-                : numberToString;
+                            ? ""
+                            : numberToString;
             if (divisibleByThree) numberToFizzBuzz += Fizz();
             if (divisibleByFive) numberToFizzBuzz += Buzz();
             return numberToFizzBuzz;
         }
 
+        private static string GetNumberFromIndex(int index)
+        {
+            return (index + 1).ToString();
+        }
+
         private string Buzz()
         {
             buzzCount = new int[] { 0, 0, 0, 0, 0 }.Length;
-            string buzz = DataTypeConverter.ParseHexBinary(HEX_BUZZ);
+            string buzz = HexToString(HEX_BUZZ);
             return buzz;
-        }
+        }      
 
         private string Fizz()
         {
             fizzCount = 0;
-            string fizz = DataTypeConverter.ParseHexBinary(HEX_FIZZ);
+            string fizz = HexToString(HEX_FIZZ);
             return fizz;
+        }
+
+        private static string HexToString(string hexValue)
+        {
+            return DataTypeConverter.ParseHexBinary(hexValue);
         }
     }
 }

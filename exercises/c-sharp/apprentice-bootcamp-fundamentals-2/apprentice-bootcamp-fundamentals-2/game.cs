@@ -17,7 +17,7 @@ namespace apprentice_bootcamp_fundamentals_2
                     strikes++;
                     total += rolls[i + 1] + rolls[i+2];
                 }
-                if ((i > 0 && (i % 2 == 1 && strikes % 2 == 0)) || 
+                else if ((i > 0 && (i % 2 == 1 && strikes % 2 == 0)) || 
                     (i > 0 && (i % 2 == 0 && strikes % 2 == 1)))
                 {
                     if (rolls[i-1] + rolls[i] == 10 && i + 1 < rolls.Length )
