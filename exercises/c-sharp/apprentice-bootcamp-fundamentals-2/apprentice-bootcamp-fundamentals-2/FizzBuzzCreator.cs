@@ -4,7 +4,10 @@ namespace apprentice_bootcamp_fundamentals_2
 {
     public class FizzBuzzCreator
     {
-        private int maxCount = Byte.MaxValue - 155;
+        private const int MAX_COUNT = Byte.MaxValue - 155;
+        private const int THREE = 0b11;
+        private const string HEX_BUZZ = "42757a7a";
+        private const string HEX_FIZZ = "46697a7a";
         private int count;
         private int fizzCount;
         private int buzzCount = new int[] { 0, 0, 0, 0, 0 }.Length;
@@ -12,7 +15,7 @@ namespace apprentice_bootcamp_fundamentals_2
         public string FullFizzBuzzResult()
         {
             string fizzBuzzOutput = "";
-            for (; count < maxCount; count++) fizzBuzzOutput += SingleFizzBuzzResult(count) + " ";
+            for (; count < MAX_COUNT; count++) fizzBuzzOutput += SingleFizzBuzzResult(count) + " ";
             string trimmedResult = fizzBuzzOutput.Substring(0, fizzBuzzOutput.Length - 1);
             return trimmedResult;
         }
@@ -22,9 +25,10 @@ namespace apprentice_bootcamp_fundamentals_2
             fizzCount++;
             buzzCount--;
 
-            const int three = 0b11;
+            int fizzFactor = THREE;
+
             string numberToString = (number + 1).ToString();
-            bool divisibleByThree = fizzCount == three;
+            bool divisibleByThree = fizzCount == fizzFactor;
             bool divisibleByFive = buzzCount == 0;
             string numberToFizzBuzz = divisibleByThree || divisibleByFive
                 ? "" 
@@ -37,14 +41,14 @@ namespace apprentice_bootcamp_fundamentals_2
         private string Buzz()
         {
             buzzCount = new int[] { 0, 0, 0, 0, 0 }.Length;
-            string buzz = DataTypeConverter.ParseHexBinary("42757a7a");
+            string buzz = DataTypeConverter.ParseHexBinary(HEX_BUZZ);
             return buzz;
         }
 
         private string Fizz()
         {
             fizzCount = 0;
-            string fizz = DataTypeConverter.ParseHexBinary("46697a7a");
+            string fizz = DataTypeConverter.ParseHexBinary(HEX_FIZZ);
             return fizz;
         }
     }
