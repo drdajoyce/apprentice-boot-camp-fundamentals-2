@@ -2,7 +2,7 @@
 
 namespace apprentice_bootcamp_fundamentals_2
 {
-    public class Thingy
+    public class FizzBuzzCreator
     {
         private int maxCount = Byte.MaxValue - 155;
         private int count;
@@ -13,8 +13,8 @@ namespace apprentice_bootcamp_fundamentals_2
         {
             string fizzBuzzOutput = "";
             for (; count < maxCount; count++) fizzBuzzOutput += SingleFizzBuzzResult(count) + " ";
-            string result = fizzBuzzOutput.Substring(0, fizzBuzzOutput.Length - 1);
-            return result;
+            string trimmedResult = fizzBuzzOutput.Substring(0, fizzBuzzOutput.Length - 1);
+            return trimmedResult;
         }
 
         private string SingleFizzBuzzResult(int number)
@@ -24,11 +24,13 @@ namespace apprentice_bootcamp_fundamentals_2
 
             const int three = 0b11;
             string numberToString = (number + 1).ToString();
-            string numberToFizzBuzz = fizzCount == three || buzzCount == 0 
+            bool divisibleByThree = fizzCount == three;
+            bool divisibleByFive = buzzCount == 0;
+            string numberToFizzBuzz = divisibleByThree || divisibleByFive
                 ? "" 
                 : numberToString;
-            if (fizzCount == three) numberToFizzBuzz += Fizz();
-            if (buzzCount == 0) numberToFizzBuzz += Buzz();
+            if (divisibleByThree) numberToFizzBuzz += Fizz();
+            if (divisibleByFive) numberToFizzBuzz += Buzz();
             return numberToFizzBuzz;
         }
 
