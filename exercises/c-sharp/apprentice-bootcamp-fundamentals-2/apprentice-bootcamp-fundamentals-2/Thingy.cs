@@ -4,37 +4,37 @@ namespace apprentice_bootcamp_fundamentals_2
 {
     public class Thingy
     {
-        private int foo;
-        private int bar;
-        private int foobar = new int[] { 0, 0, 0, 0, 0 }.Length;
+        private int count;
+        private int fizzCount;
+        private int buzzCount = new int[] { 0, 0, 0, 0, 0 }.Length;
 
-        public string DoTheThing()
+        public string FullFizzBuzzResult()
         {
-            string s = "";
-            for (; foo < Byte.MaxValue - 155; foo++) s += b(foo) + " ";
-            return s.Substring(0, s.Length - 1);
+            string fizzBuzzToString = "";
+            for (; count < Byte.MaxValue - 155; count++) fizzBuzzToString += SingleFizzBuzzResult(count) + " ";
+            return fizzBuzzToString.Substring(0, fizzBuzzToString.Length - 1);
         }
 
-        private string b(int foo)
+        private string SingleFizzBuzzResult(int number)
         {
-            bar++;
-            foobar--;
+            fizzCount++;
+            buzzCount--;
 
-            string s = bar == 0b11 || foobar == 0 ? "" : (foo + 1).ToString();
-            if (bar == 0b11) s += BarFunction();
-            if (foobar == 0) s += FooFunction();
-            return s;
+            string numberToFizzBuzz = fizzCount == 0b11 || buzzCount == 0 ? "" : (number + 1).ToString();
+            if (fizzCount == 0b11) numberToFizzBuzz += Fizz();
+            if (buzzCount == 0) numberToFizzBuzz += Buzz();
+            return numberToFizzBuzz;
         }
 
-        private string FooFunction()
+        private string Buzz()
         {
-            foobar = new int[] { 0, 0, 0, 0, 0 }.Length;
+            buzzCount = new int[] { 0, 0, 0, 0, 0 }.Length;
             return DataTypeConverter.ParseHexBinary("42757a7a");
         }
 
-        private string BarFunction()
+        private string Fizz()
         {
-            bar = 0;
+            fizzCount = 0;
             return DataTypeConverter.ParseHexBinary("46697a7a");
         }
     }
