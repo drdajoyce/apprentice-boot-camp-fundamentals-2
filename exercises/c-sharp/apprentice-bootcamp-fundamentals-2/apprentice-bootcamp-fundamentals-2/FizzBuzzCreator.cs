@@ -8,16 +8,14 @@ namespace apprentice_bootcamp_fundamentals_2
         private const int THREE = 0b11;
         private const string HEX_BUZZ = "42757a7a";
         private const string HEX_FIZZ = "46697a7a";
-        private int count;
         private int fizzCount;
         private int buzzCount = new int[] { 0, 0, 0, 0, 0 }.Length;
 
         public string FullFizzBuzzResult()
         {
             string fizzBuzzOutput = "";
-            for (; count < MAX_COUNT; count++) fizzBuzzOutput += SingleFizzBuzzResult(count) + " ";
-            string trimmedResult = RemoveLastCharacter(fizzBuzzOutput);
-            return trimmedResult;
+            for (int i = 0 ; i < MAX_COUNT ; i++) fizzBuzzOutput += SingleFizzBuzzResult(i) + " ";
+            return RemoveLastCharacter(fizzBuzzOutput);
         }
 
         private static string RemoveLastCharacter(string input)
@@ -30,10 +28,8 @@ namespace apprentice_bootcamp_fundamentals_2
             fizzCount++;
             buzzCount--;
 
-            int fizzFactor = THREE;
-
             string numberToString = GetNumberFromIndex(index);
-            bool divisibleByThree = fizzCount == fizzFactor;
+            bool divisibleByThree = fizzCount == THREE;
             bool divisibleByFive = buzzCount == 0;
             string numberToFizzBuzz = divisibleByThree || divisibleByFive
                             ? ""
