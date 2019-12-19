@@ -1,4 +1,4 @@
-namespace McrDigital.Bootcamp1.Checkout.Tests {
+namespace UnitTests {
 using System;
 using apprentice_bootcamp_fundamentals_2;
 using NUnit.Framework;
@@ -44,17 +44,22 @@ using NUnit.Framework;
       checkout.Scan("A");
       checkout.Scan("C");
       checkout.Scan("D");
+      checkout.Scan("A");
       checkout.Scan("B");
+      checkout.Scan("A");
 
-      Assert.That( checkout.Receipt.Split("\n"), Is.EqualTo(new string[] {
+
+            Assert.That( checkout.Receipt.Split("\n"), Is.EqualTo(new string[] {
         "A: 50",
         "A: 50",
         "B: 30",
-        "A: 50 - 20 (3 for 130)",
+        "A: 50",
         "C: 20",
         "D: 15",
+        "A: 50",
         "B: 30 - 15 (2 for 45)",
-        "Total: 210"
+        "A: 50 - 30 (5 for 220)",
+        "Total: 300"
       }));
     }
   }

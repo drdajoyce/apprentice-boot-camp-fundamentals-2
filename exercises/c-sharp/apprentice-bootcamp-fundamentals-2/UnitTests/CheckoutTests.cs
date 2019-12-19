@@ -32,7 +32,7 @@ using NUnit.Framework;
       checkout.Scan("A");
       checkout.Scan("A");
 
-      Assert.That(checkout.Total, Is.EqualTo(130));
+      Assert.That(checkout.Total, Is.EqualTo(150));
     }
 
     [Test]
@@ -46,7 +46,7 @@ using NUnit.Framework;
       checkout.Scan("A");
       checkout.Scan("A");
 
-      Assert.That(checkout.Total, Is.EqualTo(260));
+      Assert.That(checkout.Total, Is.EqualTo(270));
     }
     [Test]
     public void OneB() {
@@ -110,31 +110,37 @@ using NUnit.Framework;
       Assert.That(checkout.Total, Is.EqualTo(130));
       
       checkout.Scan("A");
-      Assert.That(checkout.Total, Is.EqualTo(160));
+      Assert.That(checkout.Total, Is.EqualTo(180));
       
       checkout.Scan("B");
-      Assert.That(checkout.Total, Is.EqualTo(175));
-      
-      checkout.Scan("C");
       Assert.That(checkout.Total, Is.EqualTo(195));
       
-      checkout.Scan("B");
-      Assert.That(checkout.Total, Is.EqualTo(225));
-      
       checkout.Scan("C");
+      Assert.That(checkout.Total, Is.EqualTo(215));
+      
+      checkout.Scan("B");
       Assert.That(checkout.Total, Is.EqualTo(245));
       
-      checkout.Scan("D");
-      Assert.That(checkout.Total, Is.EqualTo(260));
+      checkout.Scan("C");
+      Assert.That(checkout.Total, Is.EqualTo(265));
       
       checkout.Scan("D");
-      Assert.That(checkout.Total, Is.EqualTo(275));
+      Assert.That(checkout.Total, Is.EqualTo(280));
       
       checkout.Scan("D");
-      Assert.That(checkout.Total, Is.EqualTo(290));
+      Assert.That(checkout.Total, Is.EqualTo(295));
+      
+      checkout.Scan("D");
+      Assert.That(checkout.Total, Is.EqualTo(310));
       
       checkout.Scan("C");
-      Assert.That(checkout.Total, Is.EqualTo(310));
-    }
+      Assert.That(checkout.Total, Is.EqualTo(330));
+
+      checkout.Scan("A");
+      Assert.That(checkout.Total, Is.EqualTo(380));
+
+      checkout.Scan("A");
+      Assert.That(checkout.Total, Is.EqualTo(400));
+        }
   }
 }
